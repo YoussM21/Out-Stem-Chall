@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class DeckOfCardsService {
+  private apiUrl = 'https://deckofcardsapi.com/api/deck';
 
-  constructor( 
-    private http:HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
-  apiCall()
-  {
-    
+  shuffleNewDeck(): Observable<any> {
+    const url = `${this.apiUrl}/new/shuffle/`;
+    return this.http.get(url);
   }
 }
+
+
+
+
