@@ -7,6 +7,7 @@ import { DeckOfCardsService } from './api.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  deck_id = undefined;
 
   constructor(private deckOfCardsService: DeckOfCardsService) {}
 
@@ -17,8 +18,10 @@ export class AppComponent implements OnInit {
   shuffleNewDeck() {
     
     this.deckOfCardsService.shuffleNewDeck().subscribe((data) => {
-
-      console.log(data);
+      this.deck_id = data["deck_id"];
+      console.log(this.deck_id);
     });
   }
+
+  
 }

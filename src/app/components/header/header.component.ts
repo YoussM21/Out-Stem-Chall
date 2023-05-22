@@ -8,8 +8,10 @@ import { Component, Input } from '@angular/core';
 export class HeaderComponent {
   title : string= 'Out-Stem-Challenge';
   title2 : string= 'Guess the card to win!';
+  @Input() colorSelection: string | undefined;
+  @Input() deck_id : string | undefined;
+
   Submitguess(){
     console.log('guess')
   }
-
 }

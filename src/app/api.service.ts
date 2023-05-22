@@ -14,8 +14,12 @@ export class DeckOfCardsService {
     const url = `${this.apiUrl}/new/shuffle/`;
     return this.http.get(url);
   }
-}
 
+  drawAcard(deck_id : string| undefined ): Observable<any> {
+    const url = `${this.apiUrl}/${deck_id}/draw/?count=1`;
+    return this.http.get(url);
+  }
+}
 
 
 

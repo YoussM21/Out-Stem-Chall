@@ -5,16 +5,16 @@
 <form>
   <div class="radio-input">
       <label>
-      <input type="radio" id="value-1" name="value-radio" value="value-1">
+      <input [(ngModel)]="selectedValue" type="radio" id="value-1" name="value-radio" value="value-1">
       <span>Red</span>
       </label>
       <label>
-        <input type="radio" id="value-2" name="value-radio" value="value-2">
+        <input [(ngModel)]="selectedValue"  type="radio" id="value-2" name="value-radio" value="value-2">
       <span>Black</span>
       </label>
       <span class="selection"></span>
     </div>
-    <button [ngStyle]="{'background-color': color}" class ="btn" (click)="onClick">
+    <button [ngStyle]="{'background-color': color}" class ="btn" (click)="onClick()">
       Guess!
       </button>
   </form>   
