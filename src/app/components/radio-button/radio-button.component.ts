@@ -15,7 +15,10 @@ export class RadioButtonComponent {
   @Input() deck_id : string | undefined;
 
 
-  selectedValue = 'value-1'; // Default value
+  // selectedValue = 'red'; // Default value
+  drawnCardSuit: string | undefined;
+  selectedValue: string | undefined;
+  showCongratsMessage: boolean | null = null;
 
   onClick() {
     // this.btnClick.emit();
@@ -29,8 +32,27 @@ export class RadioButtonComponent {
   drawAcard() {
     
     this.deckOfCardsService.drawAcard(this.deck_id).subscribe((data) => {
+      
+    //   console.log(data);
+    //   this.drawnCardSuit = data.card[0].suit;
+    // });
+    console.log(data);
 
-      console.log(data);
+      if (data.cards && data.cards.length > 0) {
+        this.drawnCardSuit = data.cards[0].suit;
+      } else {
+        console.log('No cards found in the response.');
+      }
     });
+  }
+
+  submitAnswer() {
+    const correctAnswer = (this.drawnCardSuit === 'SPADES' || this.drawnCardSuit === 'CLUBS') ? 'black' : 'red';
+
+    if (this.selectedValue === correctAnswer) {  
+      this.showCongratsMessage = true;
+    } else {
+      this.showCongratsMessage = false;
+    }
   }
 }

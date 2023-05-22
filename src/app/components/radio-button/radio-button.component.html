@@ -2,19 +2,27 @@
     <input type="radio" name="color" value="red"> Red
     <input type="radio" name="color" value="black"> black
 </div> -->
+<button class="btn" (click)="onClick()">Draw a card!</button>
 <form>
   <div class="radio-input">
       <label>
-      <input [(ngModel)]="selectedValue" type="radio" id="value-1" name="value-radio" value="value-1">
+      <input [(ngModel)]="selectedValue" type="radio" id="value-1" name="value-radio" value="red">
       <span>Red</span>
       </label>
       <label>
-        <input [(ngModel)]="selectedValue"  type="radio" id="value-2" name="value-radio" value="value-2">
+        <input [(ngModel)]="selectedValue"  type="radio" id="value-2" name="value-radio" value="black">
       <span>Black</span>
       </label>
       <span class="selection"></span>
     </div>
-    <button [ngStyle]="{'background-color': color}" class ="btn" (click)="onClick()">
+    <button [ngStyle]="{'background-color': color}" class ="btn" (click)="submitAnswer()">
       Guess!
       </button>
   </form>   
+  
+  <div *ngIf="showCongratsMessage === true">
+    <p>Congratulations! Your answer is correct.</p>
+  </div>
+  <div *ngIf="showCongratsMessage === false">
+    <p>Sorry, your answer is incorrect.</p>
+  </div>
