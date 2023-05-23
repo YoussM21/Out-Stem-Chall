@@ -19,10 +19,82 @@
       Guess!
       </button>
   </form>   
-  
+<!--   
   <div *ngIf="showCongratsMessage === true">
     <p>Congratulations! Your answer is correct.</p>
   </div>
   <div *ngIf="showCongratsMessage === false">
     <p>Sorry, your answer is incorrect.</p>
+  </div> -->
+  <div *ngIf="showCongratsMessage === true">
+    <p>Congratulations! You guessed correctly.</p>
+    <button *ngIf="showNextStageButton" (click)="moveToNextStage()" class="btn">Move to Next Stage</button>
+    <button *ngIf="showRestartButton" (click)="restartGame()" class="btn">Restart Game</button>
   </div>
+  <div *ngIf="showCongratsMessage === false">
+    <p>Sorry, you guessed incorrectly.</p>
+    <button *ngIf="showRestartButton" (click)="restartGame()" class="btn">Restart Game</button>
+  </div>
+
+  
+  <div  *ngIf="firstCardValue && showCongratsMessage === null && showNextStage ">
+    <p>Guess if the next card will be higher, lower, or equal to the first card.</p>
+    <!-- <button class="btn" (click)="drawAcard2()">Draw a card!</button> -->
+    <div class="radio-input2">
+      <label><input [(ngModel)]="guess" type="radio" id="higher" name="guess" value= "higher">
+      <span>Higher</span>
+      </label>
+      <label>
+        <input [(ngModel)]="guess"  type="radio" id="lower" name="guess" value="lower">
+      <span>Lower</span>
+      </label>
+      <label>
+        <input [(ngModel)]="guess"  type="radio" id="equal" name="guess" value="equal">
+      <span>Equal</span>
+      </label>
+      <span class="selection2"></span>
+    </div>
+    <button (click)="compareCards()" [disabled]="guess === null"  class="btn">Submit Guess</button>
+    <div *ngIf="showCongratsMessage === true">
+      <p>Congratulations! You guessed correctly.</p>
+      <button *ngIf="showNextStageButton" (click)="moveToNextStage2()" class="btn">Move to Next Stage</button>
+      <button *ngIf="showRestartButton" (click)="restartGame()" class="btn">Restart Game</button>
+    </div>
+    <div *ngIf="showCongratsMessage === false">
+      <p>Sorry, you guessed incorrectly.</p>
+      <button *ngIf="showRestartButton" (click)="restartGame()" class="btn">Restart Game</button>
+    </div>  
+  </div>
+
+  <div  *ngIf="firstCardValue && showCongratsMessage === null && showNextStage2">
+    <p>Guess if the next card Suit!.</p>
+    <div class="radio-input3">
+      <label><input [(ngModel)]="cardSuit" type="radio" id="spades" name="cardSuit" value= "spades">
+      <span>Spades</span>
+      </label>
+      <label>
+        <input [(ngModel)]="cardSuit"  type="radio" id="hearts" name="cardSuit" value="hearts">
+      <span>Hearts</span>
+      </label>
+      <label>
+        <input [(ngModel)]="cardSuit"  type="radio" id="clubs" name="cardSuit" value="clubs">
+      <span>Clubs</span>
+      </label>
+      <label>
+        <input [(ngModel)]="cardSuit"  type="radio" id="diamonds" name="cardSuit" value="diamonds">
+      <span>Diamonds</span>
+      </label>
+      <span class="selection3"></span>
+    </div>
+    <!-- <button (click)="compareCards()" [disabled]="guess === null"  class="btn">Submit Guess</button>
+    <div *ngIf="showCongratsMessage === true">
+      <p>Congratulations! You guessed correctly.</p>
+      <button *ngIf="showRestartButton" (click)="restartGame()" class="btn">Restart Game</button>
+    </div>
+    <div *ngIf="showCongratsMessage === false">
+      <p>Sorry, you guessed incorrectly.</p>
+      <button *ngIf="showRestartButton" (click)="restartGame()" class="btn">Restart Game</button>
+    </div>   -->
+  </div>
+  
+  

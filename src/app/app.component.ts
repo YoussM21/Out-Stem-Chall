@@ -10,6 +10,10 @@ export class AppComponent implements OnInit {
   deck_id = undefined;
   drawnCardSuit: string | undefined;
   selectedValue: string | undefined;
+  showCongratsMessage: boolean | null = null;
+  showRestartButton: boolean = false;
+  showNextStageButton: boolean = false;
+
 
 
   constructor(private deckOfCardsService: DeckOfCardsService) {}
@@ -25,7 +29,6 @@ export class AppComponent implements OnInit {
 
       // this.drawnCardSuit = data.card[0].suit;
       console.log(this.deck_id);
-     });
-    
+     }); 
   }
 }
